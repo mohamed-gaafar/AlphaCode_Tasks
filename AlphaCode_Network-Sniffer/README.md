@@ -1,5 +1,5 @@
 
-# CodeAlpha_Network-Sniffer— Python Network Sniffer & Lightweight NIDS
+# CodeAlpha_Network-Sniffer — Python Network Sniffer & Lightweight
 
 CodeAlpha_NIDS is a minimal, extensible Network Intrusion Detection System (NIDS) built with Python and Scapy. It performs live packet capture, extracts key fields, runs simple heuristics to identify suspicious activity, and logs alerts for review.
 
@@ -62,4 +62,5 @@ Next Steps
 - Add optional JSON output mode or integration with SIEM systems
 
 See `sniffer.py` for implementation details and threshold defaults.
+
 
