@@ -1,0 +1,13 @@
+# Custom Suricata Rules for NIDS
+
+# Recon Detection
+alert tcp any any -> any any (msg:"SYN Scan Detected"; flags:S; threshold:type threshold, track by_src, count 10, seconds 60; sid:1000001;)
+alert tcp any any -> any any (msg:"Nmap Scan Detected"; flags:S; seq:0; ack:0; window:1024; threshold:type threshold, track by_src, count 5, seconds 30; sid:1000002;)
+
+# Flood Detection
+alert icmp any any -> any any (msg:"ICMP Flood Detected"; threshold:type threshold, track by_src, count 100, seconds 10; sid:1000003;)
+alert udp any any -> any any (msg:"UDP Flood Detected"; threshold:type threshold, track by_src, count 1000, seconds 10; sid:1000004;)
+
+# Suspicious Behavior
+alert tcp any any -> any 22 (msg:"SSH Brute Force Attempt"; flow:to_server,established; content:"SSH-"; threshold:type threshold, track by_src, count 5, seconds 60; sid:1000005;)
+alert tcp any any -> any any (msg:"Port Scan Detected"; flags:S; threshold:type threshold, track by_src, count 20, seconds 60; sid:1000006;)
